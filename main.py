@@ -176,14 +176,7 @@ def test(fun: Callable, input: Tuple, expected: Any):
         fun(*input) == expected
     ), f"Test failed! {fun.__name__}{input} -> {output} != {expected}"
 
-
-# Example usage
-if __name__ == "__main__":
-
-    def test(func, args, expected):
-        result = func(*args)
-        assert result == expected, f"Expected {expected}, but got {result}"
-
+def run_tests():
     test(moves_to_state, ([0, 1, 4, 3, 8],), (0b100_010_001, 0b000_001_010))
     test(moves_to_state, ([0, 1, 4, 3, 8, 2, 6, 5, 7],), (0b111_010_001, 0b000_101_110))
 
@@ -200,7 +193,12 @@ if __name__ == "__main__":
     test(evaluate, ([0, 1, 3],), 0.1)  # One pair for X
     test(evaluate, ([0, 1, 3, 4],), 0.0)  # One pair for O
 
-    # print("All tests passed")
+# Example usage
+if __name__ == "__main__":
+
+    run_tests()
+    
+    print("Game Start.")
 
     depth = 9
     moves = []
